@@ -446,18 +446,10 @@ svg {
   }
 }
 
-.device-frame::before {
-  content: "";
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  translate: -50% 0;
-  width: 34%;
-  height: 18px;
-  background: #0c1114;
-  border-radius: var(--radius-pill);
-  z-index: 2;
-}
+/* A dekoratív "sziget" jegyzet (notch) eltávolítva — a placeholder-korban
+   jól nézett ki, de a valódi screenshotok fejléc-szövegeit eltakarta.
+   A keret önmagában (lekerekített bezel + árnyék) is jól olvasható
+   telefonformát ad, notch nélkül is. */
 
 .device-frame__screen {
   position: relative;
@@ -514,7 +506,7 @@ svg {
 }
 
 .img--contacts {
-  object-position: calc(50% + 20px) top;
+  object-position: calc(50% + 35px) top;
 }
 
 .img--ical {
