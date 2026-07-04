@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<!-- ==========================================================================
+     SEO — alap meta adatok
+     FONTOS: a canonical és az OG url jelenleg placeholder domain
+     (apartmanassistant.hu). Cseréld le a végleges domainre, amint megvan.
+     ========================================================================== -->
+<title>Apartman Assistant — Az apartmankezelés egyszerűbben</title>
+<meta name="description" content="Foglalások, vendégadatok, takarítás és fizetések egyetlen átlátható alkalmazásban. Próbáld ki az Apartman Assistantot 14 napig ingyenesen." />
+<link rel="canonical" href="https://apartmanassistant.hu/" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#10161a" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Apartman Assistant" />
+<meta property="og:title" content="Apartman Assistant — Az apartmankezelés egyszerűbben" />
+<meta property="og:description" content="Foglalások, vendégadatok, takarítás és fizetések egyetlen átlátható alkalmazásban. 14 napos ingyenes próba." />
+<meta property="og:url" content="https://apartmanassistant.hu/" />
+<meta property="og:locale" content="hu_HU" />
+<!-- TODO: tölts fel egy 1200x630 megosztási képet ide -->
+<meta property="og:image" content="https://apartmanassistant.hu/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter / X card (Messenger és LinkedIn is az OG tagekből olvas) -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Apartman Assistant — Az apartmankezelés egyszerűbben" />
+<meta name="twitter:description" content="Foglalások, vendégadatok, takarítás és fizetések egyetlen átlátható alkalmazásban." />
+<meta name="twitter:image" content="https://apartmanassistant.hu/assets/og-image.jpg" />
+
+<!-- Betűtípusok -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+
+<!-- ==========================================================================
+     STRUKTURÁLT ADATOK (Schema.org)
+     ========================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Apartman Assistant",
+  "url": "https://apartmanassistant.hu/",
+  "logo": "https://apartmanassistant.hu/assets/logo.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Apartman Assistant",
+  "url": "https://apartmanassistant.hu/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Apartman Assistant",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, PWA",
+  "offers": {
+    "@type": "Offer",
+    "price": "3990",
+    "priceCurrency": "HUF",
+    "priceValidUntil": "2027-12-31"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Milyen eszközökön használható az Apartman Assistant?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Az Apartman Assistant telefonon, táblagépen és számítógépen is használható. PWA alkalmazásként néhány érintéssel a telefon kezdőképernyőjére is telepíthető." }
+    },
+    {
+      "@type": "Question",
+      "name": "Mennyi ideig tart a beállítás?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Az első apartman hozzáadása és az iCal kapcsolat beállítása általában csak néhány percet vesz igénybe. A beépített útmutató lépésről lépésre segít a folyamatban." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kell külön telepítenem valamit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nem. Az alkalmazás böngészőből azonnal használható, de igény esetén telepíthető a telefon kezdőképernyőjére is." }
+    },
+    {
+      "@type": "Question",
+      "name": "Hány apartmant kezelhetek?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Az alkalmazás több apartman kezelésére is alkalmas." }
+    },
+    {
+      "@type": "Question",
+      "name": "Hogyan működik a próbaidőszak?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Az Apartman Assistant 14 napig ingyenesen kipróbálható. Ez idő alatt minden funkció elérhető." }
+    },
+    {
+      "@type": "Question",
+      "name": "Mi történik a próbaidő lejárta után?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A próbaidő után az előfizetés havi 3 990 Ft." }
+    },
+    {
+      "@type": "Question",
+      "name": "Bármikor lemondhatom az előfizetést?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Igen. Az előfizetés bármikor lemondható." }
+    },
+    {
+      "@type": "Question",
+      "name": "Biztonságban vannak az adataim?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Igen. Az alkalmazás kizárólag a működéshez szükséges adatokat kezeli. Az adatkezelés részletei az Adatkezelési tájékoztatóban találhatók." }
+    },
+    {
+      "@type": "Question",
+      "name": "Milyen foglalási oldalakkal működik együtt?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Az alkalmazás iCal kapcsolat segítségével használható azokkal a foglalási oldalakkal, amelyek támogatják az iCal exportot, például az Airbnb, a Booking.com vagy a Szállás.hu." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kapok segítséget a beállításhoz?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Igen. Az alkalmazás beépített útmutatóval segít az iCal kapcsolat beállításában." }
+    },
+    {
+      "@type": "Question",
+      "name": "Miért készült el az Apartman Assistant?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Mert az apartmankezelés nem attól lesz egyszerűbb, ha még több felületet kell megnyitni — az Apartman Assistant egy helyre gyűjti a fontos információkat." }
+    }
+  ]
+}
+</script>
+
+<!-- ==========================================================================
+     ANALYTICS / MARKETING — placeholder betöltők (Consent Mode v2)
+     A tényleges GA4 / GTM / Meta Pixel azonosítókat a script.js tetején
+     található TODO résznél kell megadni. Amíg nincs elfogadott cookie
+     hozzájárulás, ezek nem futnak le ténylegesen (lásd script.js).
+     ========================================================================== -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Ugrás a tartalomhoz</a>
+
+<!-- ==========================================================================
+     IKON KÉSZLET (rejtett SVG sprite — egységes, saját vonalikon-rendszer)
+     ========================================================================== -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <defs>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,6 12,13 22,6"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6 3c-1.5 0-2.5 1-2.3 2.5.6 4.5 3.8 9.2 8.3 12.3 1.4 1 3.1 1.5 4.6.4l1.6-1.2c.6-.5.7-1.4.2-2l-2-2.4c-.5-.6-1.4-.7-2-.2l-1 .8c-2-1.4-3.7-3.1-5-5l.8-1c.5-.6.4-1.5-.2-2L6.8 3.3C6.5 3 6.2 3 6 3z"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="3"/><polyline points="8,17 6,21 11,17"/></symbol>
+    <symbol id="icon-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="5.5" y1="15" x2="9.5" y2="15"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8,12.5 10.5,15 16,9"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><polyline points="3,11 12,4 21,11"/><path d="M5.5 10v9.5h13V10"/></symbol>
+    <symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><line x1="11" y1="12" x2="20" y2="3"/><line x1="16" y1="7" x2="18.5" y2="9.5"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><polyline points="8.5,12 11,14.5 15.5,9"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.2 20c0-3.3 2.6-6 5.8-6s5.8 2.7 5.8 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.2 14.3c2.4.4 4.2 2.6 4.2 5.4"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.7 8 2 4 6 4c2 0 4 1.3 6 4 2-2.7 4-4 6-4 4 0 5.3 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><line x1="4" y1="12" x2="18" y2="12"/><polyline points="12,6 18,12 12,18"/></symbol>
+    <symbol id="icon-smartphone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="11" y1="18.5" x2="13" y2="18.5"/></symbol>
+    <symbol id="icon-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 4.9L19 9.7l-4.9 1.8L12 16.4l-1.8-4.9L5 9.7l4.9-1.8L12 3z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 4 1.5 6 1.5 6h-15S6 12 6 8z"/><path d="M9.5 18a2.5 2.5 0 0 0 5 0"/></symbol>
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></symbol>
+    <symbol id="icon-sliders" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 1-2-2V5z"/><path d="M20 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2V5z"/></symbol>
+    <symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><polyline points="21,15 16,10 5,21"/></symbol>
+    <symbol id="icon-zap" viewBox="0 0 24 24"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></symbol>
+  </defs>
+</svg>
+
+<!-- ==========================================================================
+     BLOKK: HEADER
+     ========================================================================== -->
+<header class="site-header" data-block="header">
+  <div class="container site-header__inner">
+    <a class="logo" href="#top" aria-label="Apartman Assistant — kezdőlap">
+      <span class="logo__mark"><svg viewBox="0 0 24 24"><use href="#icon-home"/></svg></span>
+      Apartman Assistant
+    </a>
+    <a class="btn btn-primary" href="#cta" data-cta="header">
+      Ingyenes próba
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==========================================================================
+     BLOKK: HERO
+     Csere: a .device-frame__placeholder helyére kerül majd a valódi
+     kezdőképernyő (Dashboard / Mai teendők) screenshot.
+     Ajánlott fájl: assets/screenshots/01-hero-dashboard.webp (1080×2340)
+     ========================================================================== -->
+<section class="hero" id="top" data-block="hero">
+  <div class="container hero__inner">
+    <div class="hero__content" data-reveal>
+      <span class="hero__kicker">Apartman Assistant</span>
+      <h1>Az apartmankezelés <span class="accent">egyszerűbben.</span></h1>
+      <p class="hero__lead">
+        Foglalások, vendégadatok, takarítás, napi feladatok és kapcsolatok — egyetlen
+        átlátható alkalmazásban. Ne a különböző felületek között keresgélj: kevesebb
+        idő adminisztrációra, több idő a vendégeidre.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn-primary" href="#cta" data-cta="hero">
+          Kezdd el a 14 napos próbaidőszakot
+          <svg class="icon" style="width:18px;height:18px"><use href="#icon-arrow-right"/></svg>
+        </a>
+      </div>
+      <ul class="trust-badges trust-badges--emphasis">
+        <li><svg class="icon"><use href="#icon-check"/></svg>14 napos ingyenes próba</li>
+        <li><svg class="icon"><use href="#icon-card"/></svg>3 990 Ft / hó a próba után</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Bármikor lemondható</li>
+      </ul>
+    </div>
+
+    <div class="hero__visual" data-reveal>
+      <!-- SCREENSHOT HELYE 1/8 — Dashboard / mai teendők nézet -->
+      <div class="device-frame">
+        <div class="device-frame__screen">
+          <div class="device-frame__placeholder">
+            <svg class="icon"><use href="#icon-image"/></svg>
+            <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+            <span class="device-frame__placeholder-meta">Dashboard / mai teendők · 1080×2340</span>
+          </div>
+          <!-- Csere: <img class="device-frame__img" src="assets/screenshots/01-hero-dashboard.webp" alt="Apartman Assistant kezdőképernyő a mai teendőkkel" loading="eager" width="1080" height="2340"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: PROBLÉMA
+     ========================================================================== -->
+<section class="section" id="problema" data-block="problem">
+  <div class="container">
+    <div class="problem__intro" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>Talán neked is ismerős</span>
+      <p class="problem__question">Miért kell ugyanazokat az információkat több különböző helyen tárolni?</p>
+      <p class="lead">
+        Nem a vendégekkel nehéz dolgozni — hanem azzal, hogy minden információ máshol van.
+      </p>
+    </div>
+
+    <ul class="problem__list">
+      <li class="problem__item" data-reveal>
+        <svg class="icon"><use href="#icon-calendar"/></svg>
+        <p>Megkeresem a foglalást a foglalási oldalon.</p>
+      </li>
+      <li class="problem__item" data-reveal>
+        <svg class="icon"><use href="#icon-mail"/></svg>
+        <p>Megkeresem a vendég telefonszámát az e-mailek között.</p>
+      </li>
+      <li class="problem__item" data-reveal>
+        <svg class="icon"><use href="#icon-sparkle"/></svg>
+        <p>Ellenőrzöm, hogy elkészült-e már a takarítás.</p>
+      </li>
+      <li class="problem__item" data-reveal>
+        <svg class="icon"><use href="#icon-grid"/></svg>
+        <p>Próbálom fejben összerakni a napi teendőket.</p>
+      </li>
+    </ul>
+
+    <p class="problem__outro" data-reveal>
+      Nem a munka sok. <span>Az információk vannak rossz helyen.</span> Erre kerestem
+      egyszerű megoldást — így született meg az Apartman Assistant.
+    </p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: FUNKCIÓ — Megérkezik a vendég
+     Csere: assets/screenshots/02-guest-profile.webp — vendég adatlap nézet
+     ========================================================================== -->
+<section class="section section--tight" id="funkciok" data-block="feature-guest-arrival">
+  <div class="container">
+    <div class="feature">
+      <div data-reveal>
+        <div class="feature__icon-badge badge--turquoise" style="background:var(--color-turquoise-dim)">
+          <svg class="icon" style="color:var(--color-turquoise)"><use href="#icon-users"/></svg>
+        </div>
+        <h2 class="feature__title">Megérkezik a vendég</h2>
+        <p class="feature__text">
+          Nem kell az e-mailek között keresgélned. A vendég adatlapján egyetlen helyen
+          megtalálod, amire szükséged van — és egyetlen kattintással hívhatod vagy
+          írhatsz neki.
+        </p>
+        <ul class="feature__points">
+          <li><svg class="icon"><use href="#icon-phone"/></svg> Telefonszám</li>
+          <li><svg class="icon"><use href="#icon-mail"/></svg> E-mail cím</li>
+          <li><svg class="icon"><use href="#icon-message"/></svg> Saját megjegyzések</li>
+          <li><svg class="icon"><use href="#icon-card"/></svg> Fizetési információk</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg> Elvégzett feladatok</li>
+        </ul>
+      </div>
+      <div class="feature__visual" data-reveal>
+        <!-- SCREENSHOT HELYE 2/8 — Vendég adatlap -->
+        <div class="device-frame">
+          <div class="device-frame__screen">
+            <div class="device-frame__placeholder">
+              <svg class="icon"><use href="#icon-image"/></svg>
+              <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+              <span class="device-frame__placeholder-meta">Vendég adatlap · 1080×2340</span>
+            </div>
+            <!-- Csere: <img class="device-frame__img" src="assets/screenshots/02-guest-profile.webp" alt="Vendég adatlap elérhetőségekkel és fizetési adatokkal" loading="lazy" width="1080" height="2340"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: FUNKCIÓ — Távozik a vendég / takarítás
+     Csere: assets/screenshots/03-cleaning-status.webp
+     ========================================================================== -->
+<section class="section section--tight" data-block="feature-cleaning">
+  <div class="container">
+    <div class="feature feature--reverse">
+      <div data-reveal>
+        <div class="feature__icon-badge" style="background:var(--color-orange-dim)">
+          <svg class="icon" style="color:var(--color-orange)"><use href="#icon-sparkle"/></svg>
+        </div>
+        <h2 class="feature__title">Távozik a vendég</h2>
+        <p class="feature__text">
+          Nem kell észben tartanod, melyik apartman vár takarításra — a program
+          automatikusan jelzi. Így kisebb az esélye annak, hogy valami kimarad.
+        </p>
+      </div>
+      <div class="feature__visual" data-reveal>
+        <!-- SCREENSHOT HELYE 3/8 — Takarítás állapotjelző -->
+        <div class="device-frame">
+          <div class="device-frame__screen">
+            <div class="device-frame__placeholder">
+              <svg class="icon"><use href="#icon-image"/></svg>
+              <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+              <span class="device-frame__placeholder-meta">Takarítás állapotjelző · 1080×2340</span>
+            </div>
+            <!-- Csere: <img class="device-frame__img" src="assets/screenshots/03-cleaning-status.webp" alt="Automatikus takarítás állapotjelző távozás napján" loading="lazy" width="1080" height="2340"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: KIEMELT SÁV — digitális asszisztens
+     ========================================================================== -->
+<section class="section--tight" data-block="highlight">
+  <div class="container">
+    <div class="highlight-banner" data-reveal>
+      <span class="highlight-banner__icon">
+        <svg class="icon-lg"><use href="#icon-zap"/></svg>
+      </span>
+      <h3>Egy digitális asszisztens az apartmanjaidhoz</h3>
+      <p>
+        Az Apartman Assistant folyamatosan a kezed alá dolgozik: összegyűjti az
+        információkat, emlékeztet a fontos feladatokra, és segít átlátni a napi
+        teendőket. Így mindig tudod, mi a következő lépés.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: FUNKCIÓ — Új foglalás / iCal automatikus import
+     Csere: assets/screenshots/04-new-booking.webp
+     ========================================================================== -->
+<section class="section section--tight" data-block="feature-new-booking">
+  <div class="container">
+    <div class="feature">
+      <div data-reveal>
+        <div class="feature__icon-badge" style="background:var(--color-turquoise-dim)">
+          <svg class="icon" style="color:var(--color-turquoise)"><use href="#icon-calendar"/></svg>
+        </div>
+        <h2 class="feature__title">Egy új foglalás érkezik</h2>
+        <p class="feature__text">
+          Amikor új foglalás érkezik, az Apartman Assistant automatikusan átveszi a
+          legfontosabb adatokat a foglalási naptárból (iCal feed). Nem kell újra
+          beírnod az érkezési és távozási dátumot, az apartmant vagy a vendég adatait
+          — a foglalás néhány másodperc alatt megjelenik.
+        </p>
+        <ul class="feature__points">
+          <li><svg class="icon"><use href="#icon-check"/></svg> Érkezés és távozás időpontja</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg> Az apartman adatai</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg> Fizetési információk</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg> Automatikusan létrejövő feladatok</li>
+        </ul>
+      </div>
+      <div class="feature__visual" data-reveal>
+        <!-- SCREENSHOT HELYE 4/8 — Új foglalás / foglalási lista -->
+        <div class="device-frame">
+          <div class="device-frame__screen">
+            <div class="device-frame__placeholder">
+              <svg class="icon"><use href="#icon-image"/></svg>
+              <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+              <span class="device-frame__placeholder-meta">Foglalási lista / naptár · 1080×2340</span>
+            </div>
+            <!-- Csere: <img class="device-frame__img" src="assets/screenshots/04-new-booking.webp" alt="Automatikusan importált új foglalás az iCal feedből" loading="lazy" width="1080" height="2340"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: FUNKCIÓ — Automatikus feladatok
+     Csere: assets/screenshots/05-auto-tasks.webp
+     ========================================================================== -->
+<section class="section section--tight" data-block="feature-auto-tasks">
+  <div class="container">
+    <div class="feature feature--reverse">
+      <div data-reveal>
+        <div class="feature__icon-badge" style="background:var(--color-green-dim)">
+          <svg class="icon" style="color:var(--color-green)"><use href="#icon-check"/></svg>
+        </div>
+        <h2 class="feature__title">A program a kezed alá dolgozik</h2>
+        <p class="feature__text">
+          A vendég érkezésével a hozzá tartozó feladatok is automatikusan létrejönnek,
+          így mindig pontosan látod, mi a következő teendő. Emellett saját, egyszeri
+          vagy ismétlődő feladatokat is létrehozhatsz — például minden hétfőn vagy
+          minden pénteken.
+        </p>
+        <ul class="feature__points">
+          <li><svg class="icon"><use href="#icon-key"/></svg> Kulcs előkészítése</li>
+          <li><svg class="icon"><use href="#icon-message"/></svg> Check-in információ elküldése</li>
+          <li><svg class="icon"><use href="#icon-shield"/></svg> NTAK / VIZA adminisztráció</li>
+          <li><svg class="icon"><use href="#icon-card"/></svg> Fizetés ellenőrzése</li>
+        </ul>
+      </div>
+      <div class="feature__visual" data-reveal>
+        <!-- SCREENSHOT HELYE 5/8 — Feladatok nézet -->
+        <div class="device-frame">
+          <div class="device-frame__screen">
+            <div class="device-frame__placeholder">
+              <svg class="icon"><use href="#icon-image"/></svg>
+              <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+              <span class="device-frame__placeholder-meta">Napi feladatok nézet · 1080×2340</span>
+            </div>
+            <!-- Csere: <img class="device-frame__img" src="assets/screenshots/05-auto-tasks.webp" alt="Automatikusan létrejövő feladatok érkező vendéghez" loading="lazy" width="1080" height="2340"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: FUNKCIÓ — Fizetések
+     Csere: assets/screenshots/06-payments.webp
+     ========================================================================== -->
+<section class="section section--tight" data-block="feature-payments">
+  <div class="container">
+    <div class="feature feature--spotlight">
+      <div data-reveal>
+        <div class="feature__icon-badge" style="background:var(--color-orange-dim)">
+          <svg class="icon" style="color:var(--color-orange)"><use href="#icon-card"/></svg>
+        </div>
+        <h2 class="feature__title">A fizetések mindig átláthatók</h2>
+        <p class="feature__text">
+          Az Apartman Assistant segít nyomon követni, hogy melyik vendég fizetett már,
+          és kinél várható még fizetés. Ha korábban érkezett előleg, a program
+          automatikusan kiszámolja a hátralékot — és jelez, ha egy fizetés a távozás
+          napjáig nem rendeződik.
+        </p>
+        <ul class="feature__points">
+          <li><svg class="icon"><use href="#icon-check"/></svg> Teljes összeg és előleg</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg> Fennmaradó hátralék</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg> Fizetési mód (készpénz, utalás, SZÉP-kártya...)</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg> Állapot: Fizetve / Részben fizetve / Függőben</li>
+        </ul>
+      </div>
+      <div class="feature__visual" data-reveal>
+        <!-- SCREENSHOT HELYE 6/8 — Fizetési állapot / Számlák -->
+        <div class="device-frame">
+          <div class="device-frame__screen">
+            <div class="device-frame__placeholder">
+              <svg class="icon"><use href="#icon-image"/></svg>
+              <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+              <span class="device-frame__placeholder-meta">Fizetési állapot / Számlák · 1080×2340</span>
+            </div>
+            <!-- Csere: <img class="device-frame__img" src="assets/screenshots/06-payments.webp" alt="Fizetési állapot áttekintése foglalásonként" loading="lazy" width="1080" height="2340"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: FUNKCIÓ — Kapcsolatok
+     Csere: assets/screenshots/07-contacts.webp
+     ========================================================================== -->
+<section class="section section--tight" data-block="feature-contacts">
+  <div class="container">
+    <div class="feature feature--reverse">
+      <div data-reveal>
+        <div class="feature__icon-badge" style="background:var(--color-turquoise-dim)">
+          <svg class="icon" style="color:var(--color-turquoise)"><use href="#icon-search"/></svg>
+        </div>
+        <h2 class="feature__title">Minden fontos kapcsolat egy helyen</h2>
+        <p class="feature__text">
+          A vendégek elérhetőségei automatikusan bekerülnek a Kapcsolatok közé, és
+          saját partnereket is felvehetsz — takarítót, kertészt, karbantartót,
+          villanyszerelőt. Egy érintéssel hívhatod vagy írhatsz bárkinek.
+        </p>
+        <ul class="feature__points">
+          <li><svg class="icon"><use href="#icon-search"/></svg> Gyors keresés név, telefon vagy e-mail alapján</li>
+          <li><svg class="icon"><use href="#icon-phone"/></svg> Egy érintéses hívás és e-mail</li>
+          <li><svg class="icon"><use href="#icon-users"/></svg> Korábbi foglalások apartmanonként és évenként</li>
+        </ul>
+      </div>
+      <div class="feature__visual" data-reveal>
+        <!-- SCREENSHOT HELYE 7/8 — Kapcsolatok lista -->
+        <div class="device-frame">
+          <div class="device-frame__screen">
+            <div class="device-frame__placeholder">
+              <svg class="icon"><use href="#icon-image"/></svg>
+              <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+              <span class="device-frame__placeholder-meta">Kapcsolatok lista · 1080×2340</span>
+            </div>
+            <!-- Csere: <img class="device-frame__img" src="assets/screenshots/07-contacts.webp" alt="Kapcsolatok listája kereséssel" loading="lazy" width="1080" height="2340"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: FUNKCIÓ — Első lépések / iCal beállítás
+     Csere: assets/screenshots/08-ical-setup.webp
+     ========================================================================== -->
+<section class="section section--tight" data-block="feature-onboarding">
+  <div class="container">
+    <div class="feature">
+      <div data-reveal>
+        <div class="feature__icon-badge" style="background:var(--color-green-dim)">
+          <svg class="icon" style="color:var(--color-green)"><use href="#icon-sliders"/></svg>
+        </div>
+        <h2 class="feature__title">Az első lépések mindössze néhány percet vesznek igénybe</h2>
+        <p class="feature__text">
+          Add hozzá az apartmanjaidat, és kösd össze őket a foglalási oldalakkal az
+          iCal hivatkozás segítségével. A beépített útmutató lépésről lépésre
+          megmutatja, hogyan találod meg az iCal linket az Airbnb, a Booking.com és a
+          Szállás.hu felületén — külön weboldalak keresgélése nélkül.
+        </p>
+      </div>
+      <div class="feature__visual" data-reveal>
+        <!-- SCREENSHOT HELYE 8/8 — iCal beállítás / útmutató modal -->
+        <div class="device-frame">
+          <div class="device-frame__screen">
+            <div class="device-frame__placeholder">
+              <svg class="icon"><use href="#icon-image"/></svg>
+              <span class="device-frame__placeholder-label">Képernyőkép helye</span>
+              <span class="device-frame__placeholder-meta">iCal beállítás / útmutató · 1080×2340</span>
+            </div>
+            <!-- Csere: <img class="device-frame__img" src="assets/screenshots/08-ical-setup.webp" alt="iCal kapcsolat beállítási útmutató lépésről lépésre" loading="lazy" width="1080" height="2340"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: TOVÁBBI FUNKCIÓK — rács
+     ========================================================================== -->
+<section class="section" data-block="feature-grid">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow" style="justify-content:center;display:flex"><span class="dot"></span>Ennél is többet tud</span>
+      <h2 class="feature__title">Apró funkciók, amik sokat számítanak</h2>
+      <p class="lead">
+        Hogy kevesebb időt tölts adminisztrációval, és többet a vendégeiddel.
+      </p>
+    </div>
+
+    <ul class="feature-grid">
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-check"/></svg>
+        <p>Automatikus feladatok az érkező és távozó vendégekhez</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-calendar"/></svg>
+        <p>Ismétlődő feladatok — minden hétfőn vagy minden pénteken</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-bell"/></svg>
+        <p>Dátumhoz kötött emlékeztetők a megadott napon</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-shield"/></svg>
+        <p>Foglalási ütközések jelzése azonos apartmanra</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-search"/></svg>
+        <p>Gyors keresés név, telefonszám vagy e-mail alapján</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-phone"/></svg>
+        <p>Egy érintéses hívás és e-mail küldés az appból</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-home"/></svg>
+        <p>Több apartman kezelése egyetlen alkalmazásban</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-book"/></svg>
+        <p>Beépített iCal útmutató lépésről lépésre</p>
+      </li>
+      <li class="feature-grid__item" data-reveal>
+        <svg class="icon"><use href="#icon-sparkle"/></svg>
+        <p>Folyamatosan bővülő funkciók a visszajelzések alapján</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: TÖRTÉNET / MIÉRT KÉSZÜLT
+     ========================================================================== -->
+<section class="section" data-block="story">
+  <div class="container">
+    <div class="story" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>Miért készült el az Apartman Assistant</span>
+      <blockquote>
+        „Egy jó alkalmazás nem attól jó, hogy minél több funkciója van — hanem attól,
+        hogy valóban megkönnyíti a mindennapi munkát.”
+      </blockquote>
+      <p>
+        Az Apartman Assistant nem üzleti ötletként indult, hanem egy egyszerű problémára
+        keresett megoldásként: hogy a napi munka során ne kelljen ugyanazokat az
+        információkat több helyen keresni, fejben tartani vagy újra felírni.
+      </p>
+      <p>
+        Nem egy bonyolult rendszert szerettem volna. Egy olyan alkalmazást, amely reggel
+        megnyitva segít átlátni a napot, emlékeztet a fontos feladatokra, és levesz
+        néhány terhet a válladról.
+      </p>
+      <p class="story__signature">
+        Az Apartman Assistant alapgondolata
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: GYIK (FAQ) — <details>/<summary> alapon, JS nélkül is működik
+     ========================================================================== -->
+<section class="section" id="gyik" data-block="faq">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>GYIK</span>
+      <h2 class="feature__title">Gyakran ismételt kérdések</h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Milyen eszközökön használható az Apartman Assistant?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Telefonon, táblagépen és számítógépen is használható. PWA alkalmazásként néhány érintéssel a telefon kezdőképernyőjére is telepíthető.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Mennyi ideig tart a beállítás?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Az első apartman hozzáadása és az iCal kapcsolat beállítása általában csak néhány percet vesz igénybe. A beépített útmutató lépésről lépésre segít.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Kell külön telepítenem valamit?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Nem. Az alkalmazás böngészőből azonnal használható, de igény esetén telepíthető a telefon kezdőképernyőjére is.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Hány apartmant kezelhetek?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Az alkalmazás több apartman kezelésére is alkalmas.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Hogyan működik a próbaidőszak?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">14 napig ingyenesen kipróbálható. Ez idő alatt minden funkció elérhető.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Mi történik a próbaidő lejárta után?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">A próbaidő után az előfizetés havi 3 990 Ft.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Bármikor lemondhatom az előfizetést?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Igen. Az előfizetés bármikor lemondható.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Biztonságban vannak az adataim?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Igen. Az alkalmazás kizárólag a működéshez szükséges adatokat kezeli. Részletek az Adatkezelési tájékoztatóban.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Milyen foglalási oldalakkal működik együtt?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">iCal kapcsolat segítségével azokkal a foglalási oldalakkal, amelyek támogatják az iCal exportot — például Airbnb, Booking.com vagy Szállás.hu.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Kapok segítséget a beállításhoz?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Igen. Az alkalmazás beépített útmutatóval segít az iCal kapcsolat beállításában.</p>
+      </details>
+
+      <details class="faq-item" data-reveal>
+        <summary class="faq-item__question">Miért készült el az Apartman Assistant?
+          <svg class="icon"><use href="#icon-chevron-down"/></svg>
+        </summary>
+        <p class="faq-item__answer">Mert az apartmankezelés nem attól lesz egyszerűbb, ha még több felületet kell megnyitni.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: ZÁRÓ CTA
+     ========================================================================== -->
+<section class="section" id="cta" data-block="final-cta">
+  <div class="container">
+    <div class="final-cta" data-reveal>
+      <h2>Készen állsz, hogy egyszerűbbé tedd az apartmankezelést?</h2>
+      <p class="lead">
+        Próbáld ki az Apartman Assistantot 14 napig díjmentesen, és tapasztald meg,
+        milyen érzés, amikor minden fontos információ egyetlen helyen vár.
+      </p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="/regisztracio" data-cta="final">
+          Kipróbálom
+          <svg class="icon" style="width:18px;height:18px"><use href="#icon-arrow-right"/></svg>
+        </a>
+        <ul class="trust-badges trust-badges--emphasis">
+          <li><svg class="icon"><use href="#icon-check"/></svg>14 napos ingyenes próba</li>
+          <li><svg class="icon"><use href="#icon-card"/></svg>3 990 Ft / hó a próba után</li>
+          <li><svg class="icon"><use href="#icon-check"/></svg>Bármikor lemondható</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================================
+     BLOKK: FOOTER
+     ========================================================================== -->
+<footer class="site-footer" data-block="footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <span class="logo__mark" style="width:26px;height:26px">
+        <svg viewBox="0 0 24 24" style="width:15px;height:15px"><use href="#icon-home"/></svg>
+      </span>
+      Apartman Assistant
+    </div>
+    <ul class="site-footer__links">
+      <li><a href="/kapcsolat">Kapcsolat</a></li>
+      <li><a href="/aszf">ÁSZF</a></li>
+      <li><a href="/adatkezelesi-tajekoztato">Adatkezelési tájékoztató</a></li>
+      <li><a href="/impresszum">Impresszum</a></li>
+    </ul>
+    <p class="site-footer__meta">© 2026 Apartman Assistant</p>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     BLOKK: COOKIE BANNER (GDPR / Consent Mode v2)
+     ========================================================================== -->
+<div class="cookie-banner" id="cookie-banner" data-block="cookie-banner" role="dialog" aria-label="Cookie beállítások" aria-live="polite">
+  <p>
+    A weboldal a működéshez szükséges és — hozzájárulásod esetén — statisztikai,
+    mérési sütiket használ. Bővebben az
+    <a href="/adatkezelesi-tajekoztato">Adatkezelési tájékoztatóban</a>.
+  </p>
+  <div class="cookie-banner__actions">
+    <button class="btn btn-primary" id="cookie-accept" type="button">Elfogadom</button>
+    <button class="btn btn-ghost" id="cookie-reject" type="button">Csak a szükséges</button>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
