@@ -472,7 +472,13 @@ svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  /* A screenshotok forrás-aránya kicsit szélesebb, mint a keret aránya,
+     ezért középre igazítva a bal szélen lévő UI-elemek (ikon, "K" betű
+     stb.) levágódtak. A vízszintes horgonyt ~25px-szel jobbra toltuk,
+     hogy a bal oldali tartalom is teljesen látszódjon. Ha egy adott
+     screenshotnál még mindig vág valamit, ez az érték (20–30px közt)
+     finomítható. */
+  object-position: calc(50% + 25px) top;
 }
 
 .device-frame__placeholder {
