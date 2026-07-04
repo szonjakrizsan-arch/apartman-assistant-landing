@@ -472,12 +472,53 @@ svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* A screenshotok forrás-aránya kicsit eltér a keret arányától, ezért
-     középre igazítva a bal szélen lévő UI-elemek levágódtak. A +25px-es
-     eltolás túl sok volt (jobbra vágott), ezért kisebb, ~10px-es
-     korrekcióra állítva. Ha még mindig vág valamit bal vagy jobb oldalt,
-     ez az érték finomhangolható. */
-  object-position: calc(50% + 10px) top;
+  /* Alapérték — csak akkor számít, ha egy képhez nincs lentebb egyedi
+     módosító osztály megadva. */
+  object-position: center top;
+}
+
+/* --------------------------------------------------------------------------
+   KÉPENKÉNTI POZÍCIÓ-FINOMHANGOLÁS
+   -------------------------------------------------------------------------- 
+   Minden screenshot kicsit más forrás-arányú lehet, ezért nem egy közös
+   értékkel, hanem egyenként hangoljuk a vízszintes pozíciót.
+   Csak a "calc(50% + Npx)" részben lévő Npx számot kell módosítani:
+     - pozitív szám (pl. +15px) → a kép jobbra tolódik a keretben
+       (a bal oldali tartalom jobban látszik, a jobb oldal jobban vágódik)
+     - negatív szám (pl. -15px) → a kép balra tolódik a keretben
+       (a jobb oldali tartalom jobban látszik, a bal oldal jobban vágódik)
+     - 0px → középre igazítva (nincs eltolás)
+   ------------------------------------------------------------------------ */
+.img--hero {
+  object-position: calc(50% - 10px) top;
+}
+
+.img--guest-profile {
+  object-position: calc(50% - 4px) top;
+}
+
+.img--tasks {
+  object-position: calc(50% - 4px) top;
+}
+
+.img--booking {
+  object-position: calc(50% - 4px) top;
+}
+
+.img--guest-tasks {
+  object-position: calc(50% - 4px) top;
+}
+
+.img--payments {
+  object-position: calc(50% - 4px) top;
+}
+
+.img--contacts {
+  object-position: calc(50% + 20px) top;
+}
+
+.img--ical {
+  object-position: calc(50% + 0px) top;
 }
 
 .device-frame__placeholder {
