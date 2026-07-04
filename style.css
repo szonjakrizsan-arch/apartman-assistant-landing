@@ -178,6 +178,12 @@ svg {
   padding-block: var(--space-2xl);
 }
 
+/* Kifejezetten a Hero → Probléma közti rés csökkentésére (kérésre) —
+   csak a felső térközt érinti, az alsó (a következő blokk felé) marad. */
+#problema {
+  padding-top: 1.5rem;
+}
+
 .section--tight {
   padding-block: var(--space-xl);
 }
@@ -567,7 +573,9 @@ svg {
    4b. HERO
    -------------------------------------------------------------------------- */
 .hero {
-  padding-block: var(--space-2xl) var(--space-xl);
+  /* Az alsó térköz szándékosan kisebb, mint a felső — így szűkebb a rés
+     a "Talán neked is ismerős" blokk felé (kérésre csökkentve). */
+  padding-block: var(--space-2xl) 1rem;
   position: relative;
   overflow: hidden;
 }
