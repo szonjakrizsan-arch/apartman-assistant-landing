@@ -900,6 +900,80 @@ svg {
   margin-inline: auto;
 }
 
+/* Narancs színváltozat az árazás/bevezető időszak blokkhoz — hogy vizuálisan
+   megkülönböztethető legyen a türkiz "digitális asszisztens" kiemeléstől. */
+.highlight-banner--pricing {
+  border-color: rgba(255, 154, 86, 0.28);
+  border-left-color: var(--color-orange);
+  box-shadow: 0 0 90px -24px rgba(255, 154, 86, 0.4), var(--shadow-md);
+}
+
+.highlight-banner--pricing::before {
+  background: radial-gradient(closest-side, rgba(255, 154, 86, 0.16), transparent 70%);
+}
+
+.highlight-banner--pricing .highlight-banner__icon {
+  background: radial-gradient(circle, rgba(255, 154, 86, 0.3), rgba(255, 154, 86, 0.04));
+  box-shadow: 0 0 34px rgba(255, 154, 86, 0.4), inset 0 0 0 1px rgba(255, 154, 86, 0.3);
+}
+
+.highlight-banner--pricing .icon-lg {
+  color: var(--color-orange);
+}
+
+/* Hero "Bevezető időszak" kiemelő doboz ----------------------------------- */
+.intro-period-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-turquoise-dim);
+  border: 1px solid rgba(47, 215, 196, 0.3);
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+
+.intro-period-badge__emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.intro-period-badge__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-turquoise);
+  font-size: 0.95rem;
+}
+
+.intro-period-badge__text {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+/* Korai felhasználók / visszajelzés blokk — visszafogott, kártya nélküli -- */
+.early-access-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.early-access-note .icon {
+  color: var(--color-green);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.early-access-note p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
 /* --------------------------------------------------------------------------
    4f. TOVÁBBI FUNKCIÓK RÁCS
    -------------------------------------------------------------------------- */

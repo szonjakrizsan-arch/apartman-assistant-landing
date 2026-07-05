@@ -10,7 +10,7 @@
      (apartmanassistant.hu). Cseréld le a végleges domainre, amint megvan.
      ========================================================================== -->
 <title>Apartman Assistant — Az apartmankezelés egyszerűbben</title>
-<meta name="description" content="Foglalások, vendégadatok, takarítás és fizetések egyetlen átlátható alkalmazásban. Próbáld ki az Apartman Assistantot 14 napig ingyenesen." />
+<meta name="description" content="Foglalások, vendégadatok, takarítás és fizetések egyetlen átlátható alkalmazásban. Csatlakozz a bevezető időszakhoz, és használd díjmentesen." />
 <link rel="canonical" href="https://apartmanassistant.hu/" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#10161a" />
@@ -22,7 +22,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Apartman Assistant" />
 <meta property="og:title" content="Apartman Assistant — Az apartmankezelés egyszerűbben" />
-<meta property="og:description" content="Foglalások, vendégadatok, takarítás és fizetések egyetlen átlátható alkalmazásban. 14 napos ingyenes próba." />
+<meta property="og:description" content="Foglalások, vendégadatok, takarítás és fizetések egyetlen átlátható alkalmazásban. Bevezető időszak: díjmentes használat." />
 <meta property="og:url" content="https://apartmanassistant.hu/" />
 <meta property="og:locale" content="hu_HU" />
 <!-- TODO: tölts fel egy 1200x630 megosztási képet ide -->
@@ -105,18 +105,18 @@
     },
     {
       "@type": "Question",
-      "name": "Hogyan működik a próbaidőszak?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Az Apartman Assistant 14 napig ingyenesen kipróbálható. Ez idő alatt minden funkció elérhető." }
+      "name": "Mi az a bevezető időszak?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A bevezető időszakban az Apartman Assistant díjmentesen használható. Ezalatt folyamatosan fejlesztjük a szolgáltatást a korai felhasználók visszajelzései alapján." }
     },
     {
       "@type": "Question",
-      "name": "Mi történik a próbaidő lejárta után?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A próbaidő után az előfizetés havi 3 990 Ft." }
+      "name": "Mikor kell fizetnem?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A regisztráció után a szolgáltatás a bevezető időszakban díjmentesen használható. Amikor az Apartman Assistant hivatalosan elindul, legalább 14 nappal korábban e-mailben értesítünk. Ekkor eldöntheted, hogy szeretnéd-e folytatni az előfizetést." }
     },
     {
       "@type": "Question",
-      "name": "Bármikor lemondhatom az előfizetést?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Igen. Az előfizetés bármikor lemondható." }
+      "name": "Kötelező lesz előfizetnem?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nem. A fizetős előfizetés előtt megkérdezzük, hogy szeretnéd-e tovább használni a szolgáltatást. Csak akkor válsz előfizetővé, ha ezt Te megerősíted." }
     },
     {
       "@type": "Question",
@@ -204,7 +204,7 @@
       Apartman Assistant
     </a>
     <a class="btn btn-primary" href="#cta" data-cta="header">
-      Ingyenes próba
+      Csatlakozom
     </a>
   </div>
 </header>
@@ -227,17 +227,30 @@
         átlátható alkalmazásban. Ne a különböző felületek között keresgélj: kevesebb
         idő adminisztrációra, több idő a vendégeidre.
       </p>
+
+      <div class="intro-period-badge">
+        <span class="intro-period-badge__emoji" aria-hidden="true">🚀</span>
+        <div>
+          <p class="intro-period-badge__title">Bevezető időszak</p>
+          <p class="intro-period-badge__text">
+            Regisztrálj most, és kezdd el használni az Apartman Assistantot
+            díjmentesen a bevezető időszakban.
+          </p>
+        </div>
+      </div>
+
+      <ul class="trust-badges trust-badges--emphasis">
+        <li><svg class="icon"><use href="#icon-card"/></svg>Nincs bankkártya megadása</li>
+        <li><svg class="icon"><use href="#icon-shield"/></svg>Nincs automatikus terhelés</li>
+        <li><svg class="icon"><use href="#icon-bell"/></svg>Legalább 14 nappal korábban e-mailben értesítünk, mielőtt fizetőssé válna</li>
+      </ul>
+
       <div class="hero__cta">
         <a class="btn btn-primary" href="#cta" data-cta="hero">
-          Kezdd el a 14 napos próbaidőszakot
+          Csatlakozom a bevezető időszakhoz
           <svg class="icon" style="width:18px;height:18px"><use href="#icon-arrow-right"/></svg>
         </a>
       </div>
-      <ul class="trust-badges trust-badges--emphasis">
-        <li><svg class="icon"><use href="#icon-check"/></svg>14 napos ingyenes próba</li>
-        <li><svg class="icon"><use href="#icon-card"/></svg>3 990 Ft / hó a próba után</li>
-        <li><svg class="icon"><use href="#icon-check"/></svg>Bármikor lemondható</li>
-      </ul>
     </div>
 
     <div class="hero__visual" data-reveal>
@@ -609,6 +622,44 @@
 </section>
 
 <!-- ==========================================================================
+     BLOKK: BEVEZETŐ IDŐSZAK / ELŐFIZETÉS
+     ========================================================================== -->
+<section class="section section--tight" id="arazas" data-block="intro-period-pricing">
+  <div class="container">
+    <div class="highlight-banner highlight-banner--pricing" data-reveal>
+      <span class="highlight-banner__icon">
+        <svg class="icon-lg"><use href="#icon-zap"/></svg>
+      </span>
+      <h3>Bevezető időszak: díjmentes használat</h3>
+      <p>
+        A havi előfizetés (3 990 Ft/hó) a hivatalos indulást követően válik
+        elérhetővé. Minden felhasználót legalább 14 nappal korábban e-mailben
+        értesítünk, mielőtt ez bekövetkezne — addig teljesen díjmentesen
+        használhatod az alkalmazást.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOKK: KORAI FELHASZNÁLÓK / VISSZAJELZÉSEK
+     ========================================================================== -->
+<section class="section--tight" data-block="early-access-trust">
+  <div class="container">
+    <div class="early-access-note" data-reveal>
+      <svg class="icon"><use href="#icon-users"/></svg>
+      <p>
+        Az első felhasználók visszajelzései alapján folyamatosan fejlesztjük az
+        Apartman Assistantot — a Te véleményed is alakítja a szolgáltatást.
+        Nem egy kész, lezárt terméket kapsz, hanem egy folyamatosan fejlődő
+        alkalmazás korai használói közé csatlakozol, ahol a visszajelzések
+        valóban számítanak.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
      BLOKK: TÖRTÉNET / MIÉRT KÉSZÜLT
      ========================================================================== -->
 <section class="section" data-block="story">
@@ -676,24 +727,24 @@
       </details>
 
       <details class="faq-item" data-reveal>
-        <summary class="faq-item__question">Hogyan működik a próbaidőszak?
+        <summary class="faq-item__question">Mi az a bevezető időszak?
           <svg class="icon"><use href="#icon-chevron-down"/></svg>
         </summary>
-        <p class="faq-item__answer">14 napig ingyenesen kipróbálható. Ez idő alatt minden funkció elérhető.</p>
+        <p class="faq-item__answer">A bevezető időszakban az Apartman Assistant díjmentesen használható. Ezalatt folyamatosan fejlesztjük a szolgáltatást a korai felhasználók visszajelzései alapján.</p>
       </details>
 
       <details class="faq-item" data-reveal>
-        <summary class="faq-item__question">Mi történik a próbaidő lejárta után?
+        <summary class="faq-item__question">Mikor kell fizetnem?
           <svg class="icon"><use href="#icon-chevron-down"/></svg>
         </summary>
-        <p class="faq-item__answer">A próbaidő után az előfizetés havi 3 990 Ft.</p>
+        <p class="faq-item__answer">A regisztráció után a szolgáltatás a bevezető időszakban díjmentesen használható. Amikor az Apartman Assistant hivatalosan elindul, legalább 14 nappal korábban e-mailben értesítjük. Ekkor eldöntheted, hogy szeretnéd-e folytatni az előfizetést.</p>
       </details>
 
       <details class="faq-item" data-reveal>
-        <summary class="faq-item__question">Bármikor lemondhatom az előfizetést?
+        <summary class="faq-item__question">Kötelező lesz előfizetnem?
           <svg class="icon"><use href="#icon-chevron-down"/></svg>
         </summary>
-        <p class="faq-item__answer">Igen. Az előfizetés bármikor lemondható.</p>
+        <p class="faq-item__answer">Nem. A fizetős előfizetés előtt megkérdezzük, hogy szeretnéd-e tovább használni a szolgáltatást. Csak akkor válsz előfizetővé, ha ezt Te megerősíted.</p>
       </details>
 
       <details class="faq-item" data-reveal>
@@ -735,18 +786,18 @@
     <div class="final-cta" data-reveal>
       <h2>Készen állsz, hogy egyszerűbbé tedd az apartmankezelést?</h2>
       <p class="lead">
-        Próbáld ki az Apartman Assistantot 14 napig díjmentesen, és tapasztald meg,
-        milyen érzés, amikor minden fontos információ egyetlen helyen vár.
+        Csatlakozz a bevezető időszakhoz, és használd az Apartman Assistantot
+        díjmentesen, amíg a szolgáltatás hivatalosan el nem indul.
       </p>
       <div class="cta-group">
         <a class="btn btn-primary" href="/regisztracio" data-cta="final">
-          Kipróbálom
+          Csatlakozom a bevezető időszakhoz
           <svg class="icon" style="width:18px;height:18px"><use href="#icon-arrow-right"/></svg>
         </a>
         <ul class="trust-badges trust-badges--emphasis">
-          <li><svg class="icon"><use href="#icon-check"/></svg>14 napos ingyenes próba</li>
-          <li><svg class="icon"><use href="#icon-card"/></svg>3 990 Ft / hó a próba után</li>
-          <li><svg class="icon"><use href="#icon-check"/></svg>Bármikor lemondható</li>
+          <li><svg class="icon"><use href="#icon-card"/></svg>Nincs bankkártya megadása</li>
+          <li><svg class="icon"><use href="#icon-shield"/></svg>Nincs automatikus terhelés</li>
+          <li><svg class="icon"><use href="#icon-bell"/></svg>Legalább 14 nappal korábban e-mailben értesítünk, mielőtt fizetőssé válna</li>
         </ul>
       </div>
     </div>
