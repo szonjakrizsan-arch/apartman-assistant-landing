@@ -953,6 +953,20 @@ svg {
   margin-top: 0.2rem;
 }
 
+.intro-period-badge__link {
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: var(--color-turquoise);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.intro-period-badge__link:hover {
+  color: var(--color-green);
+}
+
 /* Korai felhasználók / visszajelzés blokk — visszafogott, kártya nélküli -- */
 .early-access-note {
   display: flex;

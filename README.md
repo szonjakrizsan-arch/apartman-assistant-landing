@@ -91,13 +91,14 @@ arányára szabnod a screenshotot.
 
 ## SEO — mit kell még kitölteni
 
-- **Domain:** jelenleg `apartmanassistant.hu` szerepel placeholderként a
-  `<link rel="canonical">`, az Open Graph és a `sitemap.xml`/`robots.txt`
-  fájlokban. Cseréld le a végleges domainre, amint megvásároltad.
+- **Domain:** ✅ végleges — `apartmanassistant.hu` a megerősített, éles domain,
+  ez szerepel a `<link rel="canonical">`, az Open Graph és a
+  `sitemap.xml`/`robots.txt` fájlokban is. Nincs teendő.
 - **OG kép:** `assets/og-image.jpg`, ajánlott méret 1200×630 px — ez
   jelenik meg, ha valaki megosztja a linket Facebookon/Messengeren/LinkedInen.
-- **Favicon:** `favicon.svg` és `assets/apple-touch-icon.png` — jelenleg
-  nincsenek feltöltve, ezeket is pótolni kell.
+  Ez még nincs feltöltve, ezt pótolni kell.
+- **Favicon:** ✅ elkészült — `favicon.png`, `assets/favicon-32.png` és
+  `assets/apple-touch-icon.png` a valódi Apartman Assistant ikonból generálva.
 - A `sitemap.xml`-ben a `<lastmod>` dátumot érdemes frissíteni, ha
   tartalmi változás történik az oldalon.
 
