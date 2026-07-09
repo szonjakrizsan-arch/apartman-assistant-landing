@@ -1356,3 +1356,146 @@ svg {
     padding-block: var(--space-3xl);
   }
 }
+
+/* --------------------------------------------------------------------------
+   8. JOGI OLDALAK (ÁSZF, Adatkezelési tájékoztató, Impresszum, Kapcsolat)
+   -------------------------------------------------------------------------- 
+   Közös komponensek a négy jogi/utility oldalhoz — ugyanazt a design-nyelvet
+   használják, mint a landing oldal többi része.
+   ------------------------------------------------------------------------ */
+.legal-page {
+  padding-block: var(--space-xl) var(--space-2xl);
+}
+
+.legal-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.legal-back-link:hover {
+  color: var(--color-turquoise);
+}
+
+.legal-back-link .icon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.legal-page__eyebrow {
+  color: var(--color-turquoise);
+  font-weight: 600;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.legal-page h1 {
+  font-size: var(--fs-h1);
+}
+
+.legal-page__updated {
+  color: var(--color-text-faint);
+  font-size: var(--fs-small);
+  margin-top: var(--space-sm);
+}
+
+/* "Tartalom hamarosan" figyelmeztető sáv — amíg a végleges jogi szöveg
+   nincs beillesztve, ez jelzi a látogatónak, hogy az oldal szerkezetileg
+   kész, de a tartalma még készül. Töröld ki, ha bekerül a végleges szöveg. */
+.legal-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--color-orange-dim);
+  border: 1px solid rgba(255, 154, 86, 0.3);
+  border-radius: var(--radius-md);
+}
+
+.legal-notice .icon {
+  color: var(--color-orange);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.legal-notice p {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.legal-notice strong {
+  color: var(--color-orange);
+}
+
+.legal-section {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.legal-section:first-of-type {
+  border-top: none;
+}
+
+.legal-section h2 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-sm);
+}
+
+.legal-placeholder {
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  color: var(--color-text-faint);
+  font-style: italic;
+  font-size: 0.95rem;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* Kapcsolat oldal — egyszerűbb, nem szakaszolt jogi szöveg, hanem elérhetőségi kártya */
+.contact-card {
+  margin-top: var(--space-lg);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.contact-card__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.contact-card__item .icon {
+  color: var(--color-turquoise);
+  flex-shrink: 0;
+}
+
+.contact-card__item-label {
+  font-size: var(--fs-small);
+  color: var(--color-text-faint);
+  display: block;
+}
+
+.contact-card__item-value {
+  font-weight: 600;
+  color: var(--color-text);
+}
