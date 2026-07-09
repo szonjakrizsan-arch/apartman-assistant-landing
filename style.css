@@ -1467,6 +1467,19 @@ svg {
   );
 }
 
+/* Inline jelölés a jogi szövegekben még hiányzó cégadatokhoz (pl. adószám) */
+.legal-missing {
+  display: inline-block;
+  color: var(--color-orange);
+  background: var(--color-orange-dim);
+  border: 1px solid rgba(255, 154, 86, 0.3);
+  border-radius: 4px;
+  padding: 0.05rem 0.4rem;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 0.92em;
+}
+
 /* Kapcsolat oldal — egyszerűbb, nem szakaszolt jogi szöveg, hanem elérhetőségi kártya */
 .contact-card {
   margin-top: var(--space-lg);
