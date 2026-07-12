@@ -18,7 +18,7 @@
      kommentezve egy GA4 példa).
      ------------------------------------------------------------------------ */
   var GA4_MEASUREMENT_ID = ""; // pl. "G-XXXXXXXXXX"
-  var META_PIXEL_ID = ""; // pl. "1234567890"
+  var META_PIXEL_ID = "982039981469218";
 
   function loadAnalytics() {
     // --- Google Analytics 4 betöltése (csak elfogadás után) ---
@@ -32,11 +32,18 @@
     // }
 
     // --- Meta Pixel betöltése (csak elfogadás után) ---
-    // if (META_PIXEL_ID) {
-    //   !function(f,b,e,v,n,t,s){...}(window, document, 'script', ...);
-    //   fbq('init', META_PIXEL_ID);
-    //   fbq('track', 'PageView');
-    // }
+    if (META_PIXEL_ID) {
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)
+      }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', META_PIXEL_ID);
+      fbq('track', 'PageView');
+    }
   }
 
   /* ------------------------------------------------------------------------
