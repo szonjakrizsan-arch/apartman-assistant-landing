@@ -570,10 +570,18 @@ svg {
 
 .site-header__inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
   padding-block: 0.65rem;
+}
+
+.site-header__top {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .logo {
@@ -590,10 +598,6 @@ svg {
 @media (max-width: 380px) {
   .logo {
     font-size: 0.92rem;
-  }
-
-  .site-header__left {
-    gap: 0.6rem;
   }
 }
 
@@ -1521,23 +1525,15 @@ svg {
 /* --------------------------------------------------------------------------
    BLOG
    -------------------------------------------------------------------------- */
-.site-header__left {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  flex-shrink: 0;
-}
-
 .header-nav-link {
   font-size: var(--fs-small);
   font-weight: 700;
   color: var(--color-gold);
   text-decoration: none;
-  padding: 0.3rem 0.65rem;
+  padding: 0.3rem 0.9rem;
   border-radius: var(--radius-pill);
   background: var(--color-gold-dim);
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .header-nav-link:hover {
