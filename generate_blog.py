@@ -27,10 +27,13 @@ OUTPUT_DIR = "blog"
 
 HEADER = f"""<header class="site-header" data-block="header">
   <div class="container site-header__inner">
-    <a class="logo" href="/" aria-label="{SITE_NAME} — kezdőlap">
-      <span class="logo__mark"><svg viewBox="0 0 24 24"><use href="#icon-home"/></svg></span>
-      {SITE_NAME}
-    </a>
+    <div class="site-header__left">
+      <a class="logo" href="/" aria-label="{SITE_NAME} — kezdőlap">
+        <span class="logo__mark"><svg viewBox="0 0 24 24"><use href="#icon-home"/></svg></span>
+        {SITE_NAME}
+      </a>
+      <a class="header-nav-link" href="/blog">Blog</a>
+    </div>
     <a class="btn btn-primary" href="/#cta" data-cta="header">
       Csatlakozom
     </a>
