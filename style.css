@@ -569,6 +569,7 @@ svg {
 }
 
 .site-header__inner {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1526,6 +1527,8 @@ svg {
    BLOG
    -------------------------------------------------------------------------- */
 .header-nav-link {
+  align-self: center;
+  margin-inline: auto;
   font-size: var(--fs-small);
   font-weight: 700;
   color: var(--color-gold);
