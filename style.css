@@ -1653,6 +1653,15 @@ svg {
 
 .blog-article__cta {
   margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.blog-article__cta .btn {
+  max-width: 100%;
+  white-space: normal;
   text-align: center;
 }
 
