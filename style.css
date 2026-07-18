@@ -1507,15 +1507,25 @@ svg {
 /* --------------------------------------------------------------------------
    BLOG
    -------------------------------------------------------------------------- */
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .header-nav-link {
   font-size: var(--fs-small);
-  font-weight: 600;
-  color: var(--color-text-muted);
+  font-weight: 700;
+  color: var(--color-turquoise);
   text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-turquoise-dim);
 }
 
 .header-nav-link:hover {
-  color: var(--color-text);
+  background: var(--color-turquoise);
+  color: var(--color-bg);
 }
 
 .container--narrow {
