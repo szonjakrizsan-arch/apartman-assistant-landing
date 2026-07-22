@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://apartmanassistant.hu/blog</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apartmanassistant.hu/blog/hogyan-keruld-el-a-tulfoglalast</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://apartmanassistant.hu/blog/excel-helyett-apartman-kezeles</loc>
