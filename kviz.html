@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mennyire zsonglőrködik a foglalásaival? — Apartman Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #1b211f;
+    --surface:     #242b28;
+    --surface-2:   #2b332f;
+    --border:      rgba(216,185,104,0.16);
+    --text:        #f4f0e8;
+    --text-muted:  #a9b0ac;
+    --gold:        #d8b968;
+    --gold-soft:   rgba(216,185,104,0.14);
+    --sage:        #6fae8c;
+    --sage-soft:   rgba(111,174,140,0.14);
+    --coral:       #dc8460;
+    --coral-soft:  rgba(220,132,96,0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  .app-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: var(--sage-soft);
+    flex-shrink: 0;
+  }
+  .app-icon svg { width: 17px; height: 17px; color: var(--sage); }
+
+  .wrap {
+    width: 100%;
+    max-width: 460px;
+  }
+
+  header.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .brand-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 28px 24px 24px;
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.55);
+  }
+
+  /* ── Stressz-mérő (signature element) ── */
+  .gauge-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .gauge-label span.hi { color: var(--gold); }
+  .gauge-track {
+    height: 8px;
+    border-radius: 99px;
+    background: var(--surface-2);
+    overflow: hidden;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .gauge-fill {
+    height: 100%;
+    border-radius: 99px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--sage), var(--gold) 70%, var(--coral));
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .dot {
+    height: 4px;
+    flex: 1;
+    border-radius: 99px;
+    background: var(--surface-2);
+    transition: background 0.3s ease;
+  }
+  .dot.done { background: var(--gold); }
+  .dot.current { background: var(--text-muted); }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin: 0 0 8px;
+  }
+
+  h1.question {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.35;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .opt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+  }
+  .opt:hover { border-color: rgba(216,185,104,0.45); background: rgba(216,185,104,0.08); }
+  .opt:active { transform: scale(0.98); }
+  .opt:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .opt .bullet {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--surface); border: 1.5px solid var(--text-muted);
+    flex-shrink: 0;
+  }
+  .opt.selected { border-color: var(--gold); background: var(--gold-soft); }
+  .opt.selected .bullet { background: var(--gold); border-color: var(--gold); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .back-link:hover { color: var(--text); }
+
+  /* ── Result screen ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .result-badge.green  { background: var(--sage-soft);  color: var(--sage); }
+  .result-badge.gold   { background: var(--gold-soft);  color: var(--gold); }
+  .result-badge.coral  { background: var(--coral-soft); color: var(--coral); }
+
+  h2.result-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .result-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0 0 24px;
+  }
+  .result-body strong { color: var(--text); font-weight: 600; }
+
+  .cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 14px;
+    background: var(--gold);
+    color: #24291f;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.1s ease;
+  }
+  .cta:hover { filter: brightness(1.08); }
+  .cta:active { transform: scale(0.98); }
+
+  .restart-link {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .restart-link:hover { color: var(--text); }
+
+  .fade { animation: fadeIn 0.35s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .footnote {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="brand">
+    <span class="app-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/>
+        <path d="M9 22V12h6v10"/>
+      </svg>
+    </span>
+    <span class="brand-name">Apartman Assistant</span>
+  </header>
+
+  <div class="card" id="card">
+    <!-- JS tölti fel -->
+  </div>
+
+  <p class="footnote">30 másodperc · nincs regisztráció a kitöltéshez</p>
+</div>
+
+<script>
+/* ────────────────────────────────────────────────────────────
+   ADATOK — a kérdések, válaszok és pontszámok itt módosíthatók
+   ──────────────────────────────────────────────────────────── */
+const QUESTIONS = [
+  {
+    eyebrow: "1. kérdés / 4",
+    text: "Hány különböző felületen követi naponta a foglalásokat?",
+    options: [
+      { label: "Egyen", points: 1 },
+      { label: "Kettőn", points: 2 },
+      { label: "Három vagy több helyen", points: 3 },
+    ],
+  },
+  {
+    eyebrow: "2. kérdés / 4",
+    text: "Előfordul, hogy este még átnézi a másnapi érkezéseket vagy távozásokat?",
+    options: [
+      { label: "Soha", points: 1 },
+      { label: "Néha", points: 2 },
+      { label: "Szinte minden nap", points: 3 },
+    ],
+  },
+  {
+    eyebrow: "3. kérdés / 4",
+    text: "Ha egy kollégának vagy családtagnak kellene átvennie a napi feladatokat, mennyire lenne egyszerű?",
+    options: [
+      { label: "Gond nélkül", points: 1 },
+      { label: "Kis magyarázattal", points: 2 },
+      { label: "Nehezen", points: 3 },
+    ],
+  },
+  {
+    eyebrow: "4. kérdés / 4",
+    text: "Előfordult már, hogy majdnem kimaradt egy fontos teendő?",
+    options: [
+      { label: "Soha", points: 1 },
+      { label: "Egyszer-kétszer", points: 2 },
+      { label: "Igen, többször is", points: 3 },
+    ],
+  },
+  {
+    eyebrow: "Utolsó kérdés — ez nem számít bele az eredménybe",
+    text: "Mire fordítaná legszívesebben azt az időt, amit most adminisztrációval tölt?",
+    scored: false,
+    options: [
+      { label: "Több időt a vendégekre" },
+      { label: "Több szabadidőre" },
+      { label: "A vállalkozás fejlesztésére" },
+      { label: "Kevesebb esti adminisztrációra" },
+    ],
+  },
+];
+
+/* Pontszám-sávok (csak az 1-4. kérdés összege alapján, 4–12 közötti) */
+const RESULTS = {
+  green: {
+    badge: "Jól működik",
+    tone: "green",
+    title: "Gratulálunk — ez már egy jól működő rendszer.",
+    body: "Úgy tűnik, Önnek már kialakult egy áttekinthető napi rutinja. Az <strong>Apartman Assistant</strong> ettől függetlenül segíthet abban, hogy a foglalások és napi teendők egy helyen, még átláthatóbban legyenek — anélkül, hogy bármit át kellene alakítania.",
+    cta: "Megnézem az alkalmazást",
+  },
+  gold: {
+    badge: "Van mit egyszerűsíteni",
+    tone: "gold",
+    title: "Több napi feladat még kézzel, fejben megy.",
+    body: "Ez teljesen természetes egy induló vagy növekvő vállalkozásnál — de hosszú távon sok időt és figyelmet visz el. Az <strong>Apartman Assistant</strong>ot pontosan azért fejlesztettük, hogy ezek egy helyre kerüljenek, és ne kelljen mindent fejben tartani.",
+    cta: "Kipróbálom ingyen",
+  },
+  coral: {
+    badge: "Sok energiát vihet el az adminisztráció",
+    tone: "coral",
+    title: "A válaszai alapján a napi működés több figyelmet igényel, mint amennyit szeretne.",
+    body: "Ha szeretné egyszerűbben, egy helyen átlátni a foglalásokat és a napi teendőket — érkezők, távozók, fizetések, takarítás —, érdemes kipróbálnia az <strong>Apartman Assistant</strong>ot. Pár perc beállítás, és rögtön látszik a különbség.",
+    cta: "Ingyen kipróbálom",
+  },
+};
+
+/* A végső CTA linkje — ide kerül a landing / regisztrációs oldal URL-je */
+const CTA_URL = "https://apartmanassistant.hu/?utm_source=facebook&utm_medium=kviz&utm_campaign=fajdalompont";
+
+/* ────────────────────────────────────────────────────────────
+   LOGIKA
+   ──────────────────────────────────────────────────────────── */
+let current = 0;
+let score = 0;
+const scoredCount = QUESTIONS.filter(q => q.scored !== false).length;
+const maxScore = scoredCount * 3;
+const minScore = scoredCount * 1;
+
+const card = document.getElementById("card");
+
+function renderIntro() {
+  card.innerHTML = `
+    <p class="eyebrow">Gyors önteszt · szálláshely-üzemeltetőknek</p>
+    <h1 class="question">Mennyire zsonglőrködik nap mint nap a foglalásaival?</h1>
+    <p class="result-body" style="margin-bottom:24px;">4 rövid kérdés, utána azonnal megmutatjuk, mit érdemes tudnia a saját rutinjáról.</p>
+    <button class="cta" id="start-btn">Indítom a tesztet</button>
+  `;
+  document.getElementById("start-btn").addEventListener("click", () => {
+    current = 0; score = 0;
+    renderQuestion();
+  });
+}
+
+function renderDots() {
+  const total = QUESTIONS.length;
+  let html = '<div class="dots">';
+  for (let i = 0; i < total; i++) {
+    let cls = "dot";
+    if (i < current) cls += " done";
+    else if (i === current) cls += " current";
+    html += `<span class="${cls}"></span>`;
+  }
+  html += "</div>";
+  return html;
+}
+
+function renderGauge() {
+  const pct = maxScore === minScore ? 0 : Math.min(100, Math.round(((score - minScore) / (maxScore - minScore)) * 100));
+  return `
+    <div class="gauge-label">
+      <span>Nyugodt rutin</span>
+      <span class="hi">Túlpörgött napok</span>
+    </div>
+    <div class="gauge-track"><div class="gauge-fill" style="width:${pct}%"></div></div>
+  `;
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[current];
+  const optsHtml = q.options.map((opt, idx) => `
+    <button class="opt" data-idx="${idx}">
+      <span class="bullet"></span>
+      <span>${opt.label}</span>
+    </button>
+  `).join("");
+
+  card.innerHTML = `
+    <div class="fade">
+      ${renderGauge()}
+      ${renderDots()}
+      <p class="eyebrow">${q.eyebrow}</p>
+      <h1 class="question">${q.text}</h1>
+      <div class="options">${optsHtml}</div>
+      ${current > 0 ? '<a class="back-link" id="back-link">← Vissza az előző kérdéshez</a>' : ""}
+    </div>
+  `;
+
+  card.querySelectorAll(".opt").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const idx = parseInt(btn.dataset.idx, 10);
+      const opt = q.options[idx];
+      if (q.scored !== false) score += opt.points;
+      btn.classList.add("selected");
+      setTimeout(() => {
+        current++;
+        if (current < QUESTIONS.length) renderQuestion();
+        else renderResult();
+      }, 220);
+    });
+  });
+
+  const back = document.getElementById("back-link");
+  if (back) back.addEventListener("click", () => {
+    // Egyszerűsített "vissza": nem vonjuk le a pontot, csak visszalépünk a kérdésre.
+    current--;
+    renderQuestion();
+  });
+}
+
+function pickResultKey() {
+  const range = maxScore - minScore;
+  const rel = (score - minScore) / range; // 0..1
+  if (rel <= 0.35) return "green";
+  if (rel <= 0.68) return "gold";
+  return "coral";
+}
+
+function renderResult() {
+  const key = pickResultKey();
+  const r = RESULTS[key];
+  card.innerHTML = `
+    <div class="fade">
+      <span class="result-badge ${r.tone}">${r.badge}</span>
+      <h2 class="result-title">${r.title}</h2>
+      <p class="result-body">${r.body}</p>
+      <a class="cta" href="${CTA_URL}">${r.cta}</a>
+      <a class="restart-link" id="restart-link">Újra kitöltöm a tesztet</a>
+    </div>
+  `;
+  document.getElementById("restart-link").addEventListener("click", (e) => {
+    e.preventDefault();
+    renderIntro();
+  });
+}
+
+renderIntro();
+</script>
+
+</body>
+</html>
