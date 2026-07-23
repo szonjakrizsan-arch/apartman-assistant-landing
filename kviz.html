@@ -363,6 +363,27 @@ const RESULTS = {
 const CTA_URL = "https://apartmanassistant.hu/?utm_source=facebook&utm_medium=kviz&utm_campaign=fajdalompont";
 
 /* ────────────────────────────────────────────────────────────
+   ANALITIKA — univerzális esemény-küldő.
+   - dataLayer.push: Google Analytics 4 / Google Tag Manager számára
+     (ha GTM/GA4 be van kötve az oldalba, ez automatikusan működik).
+   - fbq('trackCustom', ...): Meta Pixel egyéni esemény, DE csak akkor
+     hívjuk meg, ha a Pixel alapkódja már be van töltve az oldalon
+     (window.fbq létezik) — így nem okoz hibát, ha még nincs beillesztve.
+   TODO: ha megvan a landing oldal Meta Pixel + consent snippetje, azt
+   ide, a <head>-be kell másolni, hogy fbq() elérhető legyen ezen az
+   oldalon is.
+   ──────────────────────────────────────────────────────────── */
+function trackEvent(name, params) {
+  params = params || {};
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: name, ...params });
+  if (typeof window.fbq === "function") {
+    window.fbq("trackCustom", name, params);
+  }
+  console.log("[kviz analitika]", name, params);
+}
+
+/* ────────────────────────────────────────────────────────────
    LOGIKA
    ──────────────────────────────────────────────────────────── */
 let current = 0;
@@ -381,6 +402,7 @@ function renderIntro() {
     <button class="cta" id="start-btn">Indítom a tesztet</button>
   `;
   document.getElementById("start-btn").addEventListener("click", () => {
+    trackEvent("quiz_started");
     current = 0; score = 0;
     renderQuestion();
   });
@@ -436,10 +458,15 @@ function renderQuestion() {
       const opt = q.options[idx];
       if (q.scored !== false) score += opt.points;
       btn.classList.add("selected");
+      trackEvent(`question_${current + 1}_answered`, { answer: opt.label });
       setTimeout(() => {
         current++;
-        if (current < QUESTIONS.length) renderQuestion();
-        else renderResult();
+        if (current < QUESTIONS.length) {
+          renderQuestion();
+        } else {
+          trackEvent("quiz_completed");
+          renderResult();
+        }
       }, 220);
     });
   });
@@ -460,18 +487,26 @@ function pickResultKey() {
   return "coral";
 }
 
+/* A `gold` belső kulcs neve az esemény-küldésnél "yellow"-ra fordul,
+   mert így kérted az esemény-neveket: result_green / result_yellow / result_red */
+const RESULT_EVENT_NAME = { green: "result_green", gold: "result_yellow", coral: "result_red" };
+
 function renderResult() {
   const key = pickResultKey();
   const r = RESULTS[key];
+  trackEvent(RESULT_EVENT_NAME[key], { score, maxScore, minScore });
   card.innerHTML = `
     <div class="fade">
       <span class="result-badge ${r.tone}">${r.badge}</span>
       <h2 class="result-title">${r.title}</h2>
       <p class="result-body">${r.body}</p>
-      <a class="cta" href="${CTA_URL}">${r.cta}</a>
+      <a class="cta" href="${CTA_URL}" id="cta-link">${r.cta}</a>
       <a class="restart-link" id="restart-link">Újra kitöltöm a tesztet</a>
     </div>
   `;
+  document.getElementById("cta-link").addEventListener("click", () => {
+    trackEvent("cta_clicked", { result: key });
+  });
   document.getElementById("restart-link").addEventListener("click", (e) => {
     e.preventDefault();
     renderIntro();
