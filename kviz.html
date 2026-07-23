@@ -7,6 +7,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Consent Mode v2 — alapértelmezett: minden elutasítva, amíg nincs döntés
+     (ugyanaz a mintázat, mint az index.html-en) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
 <style>
   :root {
     --bg:          #1b211f;
@@ -258,6 +271,42 @@
     color: var(--text-muted);
     margin-top: 18px;
   }
+
+  /* ── Cookie banner (ugyanaz a logika, mint a főoldalon) ── */
+  .cookie-banner {
+    position: fixed;
+    left: 16px; right: 16px; bottom: 16px;
+    max-width: 460px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+    display: none;
+    z-index: 100;
+  }
+  .cookie-banner.is-visible { display: block; }
+  .cookie-banner p {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0 0 12px;
+  }
+  .cookie-banner a { color: var(--gold); }
+  .cookie-banner__actions { display: flex; gap: 8px; }
+  .cookie-banner__actions button {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+  }
+  #cookie-accept { background: var(--gold); color: #24291f; border: none; }
+  #cookie-reject { background: transparent; color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -278,6 +327,16 @@
   </div>
 
   <p class="footnote">30 másodperc · nincs regisztráció a kitöltéshez</p>
+</div>
+
+<!-- Cookie banner (ugyanaz a mechanizmus, mint az index.html-en —
+     ha valaki már döntött a főoldalon, itt nem kérdezzük meg újra) -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie beállítások" aria-live="polite">
+  <p>A weboldal a működéshez szükséges és — hozzájárulásod esetén — statisztikai, mérési sütiket használ. Bővebben az <a href="/adatkezelesi-tajekoztato">Adatkezelési tájékoztatóban</a>.</p>
+  <div class="cookie-banner__actions">
+    <button id="cookie-accept" type="button">Elfogadom</button>
+    <button id="cookie-reject" type="button">Csak a szükséges</button>
+  </div>
 </div>
 
 <script>
@@ -363,16 +422,70 @@ const RESULTS = {
 const CTA_URL = "https://apartmanassistant.hu/?utm_source=facebook&utm_medium=kviz&utm_campaign=fajdalompont";
 
 /* ────────────────────────────────────────────────────────────
-   ANALITIKA — univerzális esemény-küldő.
-   - dataLayer.push: Google Analytics 4 / Google Tag Manager számára
-     (ha GTM/GA4 be van kötve az oldalba, ez automatikusan működik).
-   - fbq('trackCustom', ...): Meta Pixel egyéni esemény, DE csak akkor
-     hívjuk meg, ha a Pixel alapkódja már be van töltve az oldalon
-     (window.fbq létezik) — így nem okoz hibát, ha még nincs beillesztve.
-   TODO: ha megvan a landing oldal Meta Pixel + consent snippetje, azt
-   ide, a <head>-be kell másolni, hogy fbq() elérhető legyen ezen az
-   oldalon is.
+   ANALITIKA + CONSENT — ugyanaz a Meta Pixel ID és consent-mechanizmus,
+   mint az index.html / script.js-ben, hogy egységes legyen az egész oldalon.
    ──────────────────────────────────────────────────────────── */
+var GA4_MEASUREMENT_ID = ""; // ha lesz GA4 ID, ide kerül majd, mint a script.js-ben
+var META_PIXEL_ID = "982039981469218";
+var CONSENT_KEY = "aa_cookie_consent"; // ugyanaz a kulcs, mint a főoldalon
+
+function loadAnalytics() {
+  if (META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+}
+
+function updateConsent(granted) {
+  if (typeof gtag === "function") {
+    gtag("consent", "update", {
+      analytics_storage: granted ? "granted" : "denied",
+      ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied",
+    });
+  }
+  if (granted) loadAnalytics();
+}
+
+function getStoredConsent() {
+  try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+}
+function storeConsent(value) {
+  try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
+}
+
+function initCookieBanner() {
+  var banner = document.getElementById("cookie-banner");
+  var acceptBtn = document.getElementById("cookie-accept");
+  var rejectBtn = document.getElementById("cookie-reject");
+  if (!banner) return;
+
+  var stored = getStoredConsent();
+  if (stored === "granted") { updateConsent(true); return; }
+  if (stored === "denied")  { updateConsent(false); return; }
+
+  banner.classList.add("is-visible");
+  if (acceptBtn) acceptBtn.addEventListener("click", function () {
+    storeConsent("granted"); updateConsent(true); banner.classList.remove("is-visible");
+  });
+  if (rejectBtn) rejectBtn.addEventListener("click", function () {
+    storeConsent("denied"); updateConsent(false); banner.classList.remove("is-visible");
+  });
+}
+document.addEventListener("DOMContentLoaded", initCookieBanner);
+
+/* Esemény-küldő — dataLayer mindig kap adatot (Consent Mode v2 ezt kezeli),
+   a Meta Pixel egyéni esemény pedig csak akkor megy ki ténylegesen, ha a
+   látogató elfogadta a sütiket (tehát a Pixel már be van töltve). */
 function trackEvent(name, params) {
   params = params || {};
   window.dataLayer = window.dataLayer || [];
@@ -380,7 +493,6 @@ function trackEvent(name, params) {
   if (typeof window.fbq === "function") {
     window.fbq("trackCustom", name, params);
   }
-  console.log("[kviz analitika]", name, params);
 }
 
 /* ────────────────────────────────────────────────────────────
