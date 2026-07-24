@@ -18,6 +18,7 @@
      kommentezve egy GA4 példa).
      ------------------------------------------------------------------------ */
   var GA4_MEASUREMENT_ID = ""; // pl. "G-XXXXXXXXXX"
+  var GOOGLE_ADS_ID = "AW-18334546190";
   var META_PIXEL_ID = "982039981469218";
 
   function loadAnalytics() {
@@ -30,6 +31,16 @@
     //   gtag('js', new Date());
     //   gtag('config', GA4_MEASUREMENT_ID);
     // }
+
+    // --- Google Ads címke betöltése (csak elfogadás után) ---
+    if (GOOGLE_ADS_ID) {
+      var ga = document.createElement("script");
+      ga.async = true;
+      ga.src = "https://www.googletagmanager.com/gtag/js?id=" + GOOGLE_ADS_ID;
+      document.head.appendChild(ga);
+      gtag('js', new Date());
+      gtag('config', GOOGLE_ADS_ID);
+    }
 
     // --- Meta Pixel betöltése (csak elfogadás után) ---
     if (META_PIXEL_ID) {
