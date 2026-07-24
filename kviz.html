@@ -426,10 +426,19 @@ const CTA_URL = "https://apartmanassistant.hu/?utm_source=facebook&utm_medium=kv
    mint az index.html / script.js-ben, hogy egységes legyen az egész oldalon.
    ──────────────────────────────────────────────────────────── */
 var GA4_MEASUREMENT_ID = ""; // ha lesz GA4 ID, ide kerül majd, mint a script.js-ben
+var GOOGLE_ADS_ID = "AW-18334546190";
 var META_PIXEL_ID = "982039981469218";
 var CONSENT_KEY = "aa_cookie_consent"; // ugyanaz a kulcs, mint a főoldalon
 
 function loadAnalytics() {
+  if (GOOGLE_ADS_ID) {
+    var ga = document.createElement("script");
+    ga.async = true;
+    ga.src = "https://www.googletagmanager.com/gtag/js?id=" + GOOGLE_ADS_ID;
+    document.head.appendChild(ga);
+    gtag('js', new Date());
+    gtag('config', GOOGLE_ADS_ID);
+  }
   if (META_PIXEL_ID) {
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
